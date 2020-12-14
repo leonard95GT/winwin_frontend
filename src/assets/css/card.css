@@ -1,0 +1,21 @@
+/* Cards */
+.card-purple{
+    width: 80rem; 
+    border-radius: 20px; 
+    background-color: #7837ae;
+  }
+  .card{
+    width: 80rem;
+    border-radius: 25px;
+  }
+  .card-blue{
+    width: 80rem; 
+    border-radius: 27px; 
+    background-color: rgb(101, 201, 184);
+  }
+  
+  
+  @media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 15px;}
+  }
