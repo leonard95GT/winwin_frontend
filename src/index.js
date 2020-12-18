@@ -1,11 +1,43 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './views/Home';
+
+/* Views */
+import Home from './views/Home';
+import Oportunity from './views/Oportunity';
+import Bussiness from './views/Bussiness';
+import Help from './views/Help';
+import Payment from './views/Payment';
+
 import reportWebVitals from './reportWebVitals';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Router>
+        <Switch>
+          <Route exact={true} path="/">
+            <Home />
+          </Route>
+          <Route path="/oportunidades">
+            <Oportunity />
+          </Route>
+          <Route path="/negocios">
+            <Bussiness />
+          </Route>
+          <Route path="/posso-ajudar">
+            <Help />
+          </Route>
+          <Route path="/pagamentos">
+            <Payment />
+          </Route>
+
+
+        </Switch>
+    </Router>
   </React.StrictMode>,
   document.getElementById('root')
 );

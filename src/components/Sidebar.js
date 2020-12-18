@@ -1,17 +1,36 @@
-import React from 'react'
+import React, {useState} from 'react'
 import '../assets/css/sidebar.css'
+import { Link } from 'react-router-dom'
+import Logo from '../assets/images/logo_2.png'
+
 
 const Sidebar = () => {
+    const [selected, setSelected] = useState({
+        items:{
+            home: 'selected',
+            search_bussiness: null,
+            bussiness: null,
+            payment: null,
+            config: null,
+            help: null
+        }
+    })
+
+    const alterSelected = (item, data) => {
+        if(item === 'home') selected.items.payment = 'selected'
+    }
     
     return (
         <div className='sidenav'>
-            <a className='selected'>Home</a>
-            <a>Buscar Negócios</a>
-            <a>Negócios</a>
-            <a>Pagamentos</a>
-            <a>Configurações</a>
-            <a>Ajuda</a>
-            <a className="button" data-toggle="modal" data-target="#newDemand">Cadastrar uma demanda/oferta</a>
+            <Link id="logo" href=""><img src={Logo} alt="" width="90%"/></Link>
+            <Link onClick={e => alterSelected('home' ,e.target.value)} value='selected' to="/" className={selected.items.home}>Home</Link>
+            <Link to="/oportunidades" className={selected.items.search_bussiness}>Buscar Negócios</Link>
+            <Link to="/negocios" className={selected.items.bussiness}>Negócios</Link>
+            <Link to="/pagamentos" className={selected.items.payment}>Pagamentos</Link>
+            <Link to="/configuracoes" className={selected.items.config}>Configurações</Link>
+            <Link to="/ajuda" className={selected.items.help}>Ajuda</Link>
+
+            <a className="button" data-toggle="modal" data-target="#newDemand">Comprar / Vender</a>
         </div>
     )
 }
