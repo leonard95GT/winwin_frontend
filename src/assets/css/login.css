@@ -1,5 +1,25 @@
-.bg
-{
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap');
+
+body{
+    color: rgb(71, 71, 71);
+}
+
+input{
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-color: rgb(51, 51, 51);
+    width: 22rem;
+    outline: none;
+}
+
+#form_part{
+    padding: 5rem;
+    padding-left: 7rem !important;
+}
+
+.bg{
   width: 100%;
   z-index: 0;
   height: -webkit-fill-available; /*or 70%, or what you want*/
@@ -15,8 +35,66 @@
     height: 100%;
     position: absolute;
     top: 0;
+    padding-top: 11%;
+    padding-left: 10%;
+    padding-right: 5%;
 }
 
 .title-background{
-
+    color: white;
+    font-family: Ubuntu;
+    font-size: 45px;
 }
+
+.subtitle-background{
+    margin-top: 1rem;
+    color: white;
+    font-family: Ubuntu;
+    font-size: 15px;
+}
+
+.title-logo{
+    font-family: Open Sans;
+    font-size: 45px;
+    color: rgb(56, 54, 54);
+}
+
+.login{
+    margin-bottom: 5rem;
+    padding-left: 0rem;
+}
+
+.form{
+    padding-left: 1rem;
+}
+
+.titleScreen{
+    margin-bottom: 3rem;
+}
+
+.button{
+    background-color: rgb(101, 201, 184);
+    border-radius: 25px;
+    padding-right: 10px;
+    margin-right: 20px; margin-top: 20px;
+    cursor: pointer;
+    color: white;
+    width: 24rem;
+    height: 3rem;
+    text-align: center;
+    padding-top: 10px;
+}
+
+.divisor{
+    margin-bottom: 2rem;
+}
+
+.divisor_two{
+    margin-bottom: 2rem;
+}
+
+
+
+
+
+
