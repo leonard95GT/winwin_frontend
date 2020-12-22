@@ -2,6 +2,7 @@ import React from 'react'
 import '../assets/css/header.css'
 import Eu from '../assets/images/eu.jpg' 
 import { UncontrolledButtonDropdown, DropdownMenu, DropdownItem, DropdownToggle } from 'reactstrap';
+import { Link } from 'react-router-dom'
 
 const Header = () => {
     return (
@@ -18,7 +19,11 @@ const Header = () => {
                                 <DropdownItem>Configurações</DropdownItem>
                                 <DropdownItem>Ajuda</DropdownItem>
                                 <DropdownItem divider />
-                                <DropdownItem>Sair</DropdownItem>
+                                <DropdownItem>
+                                    <Link to='/login'>
+                                        Sair
+                                    </Link>  
+                                </DropdownItem>
                             </DropdownMenu>
                         </UncontrolledButtonDropdown>
                         </div>

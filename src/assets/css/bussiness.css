@@ -8,7 +8,7 @@ body {
   }
   
   #logo{
-    margin-bottom: 50px;
+    margin-bottom: 5rem;
   }
 
   .sidenav {
@@ -151,26 +151,7 @@ body {
   background-color: rgb(101, 201, 184);
 }
 
-/* Tables */
-table thead tr th{
-    border: none !important;
-    font-size: 14px;
-}
-table tbody tr th{
-    border: none !important;
-    color: rgb(101, 201, 184);
-}
-td{
-    border: none !important;
-    vertical-align: middle !important;
-}
-.rows{
-  box-shadow: 5px 5px 5px grey;
-  border-bottom-left-radius: 25px;
-  border-bottom-right-radius: 25px;
-  border-top-right-radius: 25px;
-  border-top-left-radius: 25px;
-}
+
 
 
 /*Modals*/

@@ -7,6 +7,7 @@ import Oportunity from './views/Oportunity';
 import Bussiness from './views/Bussiness';
 import Help from './views/Help';
 import Payment from './views/Payment';
+import Login from './views/Login'
 
 import reportWebVitals from './reportWebVitals';
 import {
@@ -33,6 +34,9 @@ ReactDOM.render(
           </Route>
           <Route path="/pagamentos">
             <Payment />
+          </Route>
+          <Route path="/login">
+            <Login />
           </Route>
 
 
