@@ -2,9 +2,16 @@ import React from 'react'
 import '../assets/css/header.css'
 import Eu from '../assets/images/eu.jpg' 
 import { UncontrolledButtonDropdown, DropdownMenu, DropdownItem, DropdownToggle } from 'reactstrap';
-import { Link } from 'react-router-dom'
+import { logout } from "../services/auth";
 
-const Header = () => {
+
+const Header = ({history}) => {
+   
+    const logOut = () => {
+        console.log(history)
+        logout()
+    }
+
     return (
         <div className="main">
             <div className="shadow p-3 mb-5 mr-5 bg-white rounded">
@@ -19,10 +26,8 @@ const Header = () => {
                                 <DropdownItem>Configurações</DropdownItem>
                                 <DropdownItem>Ajuda</DropdownItem>
                                 <DropdownItem divider />
-                                <DropdownItem>
-                                    <Link to='/login'>
-                                        Sair
-                                    </Link>  
+                                <DropdownItem onClick={() => logOut()}>
+                                        Sair  
                                 </DropdownItem>
                             </DropdownMenu>
                         </UncontrolledButtonDropdown>
