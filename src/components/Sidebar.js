@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import '../assets/css/sidebar.css'
 import { Link } from 'react-router-dom'
 import Logo from '../assets/images/logo_2.png'
+import ModalNewDemand from '../components/Modals/NewDemand'
 
 
 const Sidebar = () => {
@@ -31,6 +32,8 @@ const Sidebar = () => {
             <Link to="/ajuda" className={selected.items.help}>Ajuda</Link>
 
             <a className="button" data-toggle="modal" data-target="#newDemand">Comprar / Vender</a>
+
+            <ModalNewDemand />
         </div>
     )
 }
