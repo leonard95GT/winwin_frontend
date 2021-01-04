@@ -1,25 +1,43 @@
 import React from 'react'
 import '../assets/css/header.css'
+import Eu from '../assets/images/eu.jpg' 
+import { UncontrolledButtonDropdown, DropdownMenu, DropdownItem, DropdownToggle } from 'reactstrap';
+import { logout } from "../services/auth";
 
 
-const Header = () => {
+const Header = ({history}) => {
+   
+    const logOut = () => {
+        console.log(history)
+        logout()
+    }
+
     return (
         <div className="main">
             <div className="shadow p-3 mb-5 mr-5 bg-white rounded">
                 <div className="row justify-content-end">
                     <div className="d-flex flex-row-reverse bd-highlight">
                         <div className="dropdown">
-                            <a className="btn dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <UncontrolledButtonDropdown>
+                            <DropdownToggle caret color="white">
                                 Leonardo Rene
-                            </a>
-                            <div className="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                <a className="dropdown-item">Logout</a>
-                            </div>
+                            </DropdownToggle>
+                            <DropdownMenu>
+                                <DropdownItem>Configurações</DropdownItem>
+                                <DropdownItem>Ajuda</DropdownItem>
+                                <DropdownItem divider />
+                                <DropdownItem onClick={() => logOut()}>
+                                        Sair  
+                                </DropdownItem>
+                            </DropdownMenu>
+                        </UncontrolledButtonDropdown>
                         </div>
                         <div className="p-2 bd-highlight">
-                            <img alt="Avatar" className="avatar" />
+                            <img src={Eu} alt="Avatar" className="avatar" />
                         </div>
-                        <div className="p-2 bd-highlight"><a data-toggle="modal" data-target="#newDemand" className="buttonGreen">Cadastrar uma demanda/oferta</a></div>
+                        <div className="p-2 bd-highlight">
+                            <div className="buttonGreen">Comprar / Vender</div>
+                        </div>
                     </div>
                 </div>
             </div>
