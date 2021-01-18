@@ -4,7 +4,7 @@ import  '../../assets/css/bussiness.css'
  
 const Oportunity = (props) => {
     return (
-        <Modal isOpen={true} >
+        <Modal isOpen={props.show} toggle={props.onHide}>
             <ModalBody>
               <div class="row justify-content-md-center">
                 <div class="col-12 text-center mb-5">

@@ -1,21 +1,16 @@
 import React from 'react'
-import { Modal, ModalBody, ModalHeader } from 'reactstrap'
+import { Modal, ModalBody } from 'reactstrap'
 import Image from '../../assets/images/conquista.png'
 import  '../../assets/css/bussiness.css'
  
 const Oportunity = (props) => {
     return (
-        <Modal isOpen={true}>
-            <ModalHeader>
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </ModalHeader>
+        <Modal isOpen={props.show} toggle={props.onHide} size="lg">
+            
             <ModalBody>
                 <div class="row">
-                    <div class="col-10">
-                        <h2 class="font-blue">Oportunidade conquistada Parabéns!!!!</h2>
+                    <div class="col-12">
+                        <h2 class="font-blue text-center">Oportunidade conquistada Parabéns!!!!</h2>
                     </div>
                 </div>
                 <div class="row justify-content-center">

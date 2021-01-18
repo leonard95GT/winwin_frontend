@@ -1,6 +1,6 @@
 import React , {useState} from 'react'
-import '../assets/css/bussiness_table.css'
-import Modal from '../components/Modals/Oportunity'
+import '../../assets/css/bussiness_table.css'
+import Modal from '../../components/Modals/Oportunity'
 
 const Table = () => {
 
@@ -13,7 +13,7 @@ const Table = () => {
 
     return (
         <div>
-            <div className="row">
+            <div className="row mb-5">
                 <div className="col-6">
                     Negócios conquistados
                 </div>

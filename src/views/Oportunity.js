@@ -1,6 +1,6 @@
 import Sidebar from '../components/Sidebar'
 import Header from '../components/Header'
-import Table from '../components/Table'
+import Table from '../components/Tables/Oportunity'
 import '../assets/css/content.css'
 
 function Oportunity() {

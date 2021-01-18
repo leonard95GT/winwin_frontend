@@ -17,8 +17,14 @@ const Sidebar = () => {
         }
     })
 
+    const [modalDemand, setModalDemand] = useState(false)
+
     const alterSelected = (item, data) => {
         if(item === 'home') selected.items.payment = 'selected'
+    }
+
+    const isOpen = () => {
+        setModalDemand(!modalDemand)
     }
     
     return (
@@ -31,9 +37,9 @@ const Sidebar = () => {
             <Link to="/configuracoes" className={selected.items.config}>Configurações</Link>
             <Link to="/ajuda" className={selected.items.help}>Ajuda</Link>
 
-            <a className="button" data-toggle="modal" data-target="#newDemand">Comprar / Vender</a>
+            <a className="button" onClick={() => isOpen()}>Comprar / Vender</a>
 
-            <ModalNewDemand />
+            <ModalNewDemand show={modalDemand} onHide={()=> isOpen()} />
         </div>
     )
 }

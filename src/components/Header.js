@@ -1,16 +1,23 @@
-import React from 'react'
+import React, {useState} from 'react'
 import '../assets/css/header.css'
 import Eu from '../assets/images/eu.jpg' 
 import { UncontrolledButtonDropdown, DropdownMenu, DropdownItem, DropdownToggle } from 'reactstrap';
 import { logout } from "../services/auth";
+import ModalNewDemand from '../components/Modals/NewDemand'
 
 
 const Header = ({history}) => {
    
     const logOut = () => {
-        console.log(history)
+        //console.log(history)
         logout()
     }
+
+    const [modalDemand, setModalDemand] = useState(false)
+    const isOpen = () => {
+        setModalDemand(!modalDemand)
+    }
+
 
     return (
         <div className="main">
@@ -36,12 +43,12 @@ const Header = ({history}) => {
                             <img src={Eu} alt="Avatar" className="avatar" />
                         </div>
                         <div className="p-2 bd-highlight">
-                            <div className="buttonGreen">Comprar / Vender</div>
+                            <div className="buttonGreen" onClick={() => isOpen()}>Comprar / Vender</div>
                         </div>
                     </div>
                 </div>
             </div>
-
+        <ModalNewDemand show={modalDemand} onHide={()=> isOpen()} />
         </div>
     )
 }

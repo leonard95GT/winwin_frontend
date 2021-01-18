@@ -1,6 +1,6 @@
 import React , {useState} from 'react'
-import '../assets/css/bussiness_table.css'
-import Modal from '../components/Modals/Oportunity'
+import '../../assets/css/bussiness_table.css'
+import Modal from '../../components/Modals/InscribeDemand'
 
 const Table = () => {
 
@@ -13,9 +13,9 @@ const Table = () => {
 
     return (
         <div>
-            <div className="row">
+            <div className="row mb-5">
                 <div className="col-6">
-                    Negócios conquistados
+                    Oportunidades disponíveis
                 </div>
                 <div className="col-6">
                     Filtros
@@ -40,7 +40,7 @@ const Table = () => {
                   <td>Tecnologia</td>
                   <td>10/03/2001</td>
                   <td>bla bla bla bla bla</td>
-                  <td><div class="buttonPurple"><a onClick={() => isOpen()}>Visualizar</a></div></td>
+                  <td><div class="buttonPurple"><a onClick={() => isOpen()}>Participar</a></div></td>
                 </tr>
                 
                 {/* <tr class="rows">
