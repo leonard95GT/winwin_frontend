@@ -1,17 +1,22 @@
 import React , {useEffect, useState} from 'react'
 import '../../assets/css/bussiness_table.css'
-import Modal from '../../components/Modals/InscribeDemand'
+import ModalParticipate from '../../components/Modals/InscribeDemand'
 import api from '../../services/api'
 
 const Table = () => {
     const [oportunities, setOportunities] = useState({data: []})
     const [segments, setSegments] = useState({data: []})
     const [companies, setCompanies] = useState({data: []})
+    const [demand, setDemand] = useState()
   
     const [modal, setModal] = useState(false)
 
     const isOpen = () => {
         setModal(!modal)
+      }
+
+      const demandData = demand => {
+
       }
 
       useEffect(() => {
@@ -61,7 +66,7 @@ const Table = () => {
                         }) }                       
                         <td>{d.created_at}</td>
                         <td>{d.description}</td>
-                        <td><div class="buttonPurple"><a onClick={() => isOpen()}>Participar</a></div></td>
+                        <td><div class="buttonPurple"><a onClick={() => {demandData(d);isOpen()}}>Participar</a></div></td>
                     </tr>
                 ))}
                 
@@ -77,8 +82,7 @@ const Table = () => {
             </table>
                 </div>
             </div>
-            <Modal show={modal} onHide={() => isOpen()} />
-
+            {/* <ModalParticipate show={modal} demand={demand} segments={segments} onHide={() => isOpen()}/> */}
         </div>
 
     )
