@@ -7,7 +7,7 @@ const InscribeDemand = (props) => {
   const [demandData, setDemandData] = useState(props.demand)
   //const [segments, segSegments] = useState(props.segments)
   const [newProposal, setNewProposal] = useState({
-    id_demand: demandData.id,
+    id_demand: 1,
     amount: '',
     price:0,
     total_price: 0,
@@ -39,16 +39,16 @@ const InscribeDemand = (props) => {
                     <div class="col-8">
                       <div class="groupForm">
                         <h5 class="card-title font-purple">Título</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">{demandData.title}</h6>
+                        <h6 class="card-subtitle mb-2 text-muted">{demandData?demandData.title:''}</h6>
 
                       </div>
                       <div class="groupForm">
                         <h5 class="card-title font-purple">Descrição</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">{demandData.description}</h6>
+                        <h6 class="card-subtitle mb-2 text-muted">{demandData?demandData.description:''}</h6>
                       </div>
                       <div class="groupForm">
                         <h5 class="card-title font-purple">Categorias</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">{demandData.id_segment}</h6>
+                        <h6 class="card-subtitle mb-2 text-muted">{demandData?demandData.id_segment:''}</h6>
                       </div>
                       {/* <div class="groupForm">
                         <h5 class="card-title font-purple">Sales Kit</h5>
