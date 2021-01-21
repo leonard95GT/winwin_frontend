@@ -4,13 +4,15 @@ import Eu from '../assets/images/eu.jpg'
 import { UncontrolledButtonDropdown, DropdownMenu, DropdownItem, DropdownToggle } from 'reactstrap';
 import { logout } from "../services/auth";
 import ModalNewDemand from '../components/Modals/NewDemand'
+import { useHistory } from "react-router-dom";
 
 
-const Header = ({history}) => {
-   
+const Header = () => {
+    const history = useHistory()
+
     const logOut = () => {
-        //console.log(history)
         logout()
+        history.push(`${process.env.PUBLIC_URL}/login`);
     }
 
     const [modalDemand, setModalDemand] = useState(false)
@@ -27,7 +29,7 @@ const Header = ({history}) => {
                         <div className="dropdown">
                         <UncontrolledButtonDropdown>
                             <DropdownToggle caret color="white">
-                                Leonardo Rene
+                                {sessionStorage.getItem('name')}
                             </DropdownToggle>
                             <DropdownMenu>
                                 <DropdownItem>Configurações</DropdownItem>

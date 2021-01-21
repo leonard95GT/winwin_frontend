@@ -18,8 +18,9 @@ function Login({history}) {
                 return alert('Gentileza preencha os campos corretamente')
             }
                 api.post('sessions',{email: email, password: password}).then(token => {
+                    console.log(token.data)
                     const tokenData = token.data.token.token;
-                    const name      = token.data.user.name;
+                    const name      = token.data.user.username;
                     const company      = token.data.user.id_company 
                     if(token.status === 202){
                         login(tokenData, name, company)

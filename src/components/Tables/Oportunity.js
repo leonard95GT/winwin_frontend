@@ -1,14 +1,31 @@
-import React , {useState} from 'react'
+import React , {useEffect, useState} from 'react'
 import '../../assets/css/bussiness_table.css'
 import Modal from '../../components/Modals/InscribeDemand'
+import api from '../../services/api'
 
 const Table = () => {
-
+    const [oportunities, setOportunities] = useState({data: []})
+    const [segments, setSegments] = useState({data: []})
+    const [companies, setCompanies] = useState({data: []})
+  
     const [modal, setModal] = useState(false)
 
     const isOpen = () => {
         setModal(!modal)
       }
+
+      useEffect(() => {
+          api.get('oportunities').then(list => {
+              if(list.status === 200) setOportunities((prevState) => ({...prevState, data: list.data}))
+          })
+          api.get('segments').then(data => {
+            setSegments((prevState) => ({...prevState, data: data.data}))
+          })
+          api.get('companies').then(data => {
+            setCompanies((prevState) => ({...prevState, data: data.data}))
+          })
+      
+      },[])
 
 
     return (
@@ -34,14 +51,19 @@ const Table = () => {
                 </tr>
               </thead>
               <tbody>
-
-                <tr class="rows">
-                  <td>Claro</td>
-                  <td>Tecnologia</td>
-                  <td>10/03/2001</td>
-                  <td>bla bla bla bla bla</td>
-                  <td><div class="buttonPurple"><a onClick={() => isOpen()}>Participar</a></div></td>
-                </tr>
+                {oportunities.data.map((d, i) => (
+                    <tr class="rows">
+                        {companies.data.map((dd, i) => {
+                            if(d.id_company_owner === dd.id) return (<td>{dd.fantasy_name}</td>)
+                        }) }
+                        {segments.data.map((dd, i) => {
+                            if(d.id_segment === dd.id) return (<td>{dd.name}</td>)
+                        }) }                       
+                        <td>{d.created_at}</td>
+                        <td>{d.description}</td>
+                        <td><div class="buttonPurple"><a onClick={() => isOpen()}>Participar</a></div></td>
+                    </tr>
+                ))}
                 
                 {/* <tr class="rows">
                   <td>Claro</td>

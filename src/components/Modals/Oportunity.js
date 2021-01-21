@@ -1,9 +1,21 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import { Modal, ModalBody } from 'reactstrap'
 import Image from '../../assets/images/conquista.png'
 import  '../../assets/css/bussiness.css'
+import api from '../../services/api'
+
  
 const Oportunity = (props) => {
+  const [oportunity, setOportunity] = useState()
+  let item
+  useEffect(() => {
+   item = props.oportunity
+    console.log(props)
+    api.get('demands/'+ props.oportunity).then(oportunityData => {
+      console.log(oportunityData.data)
+      setOportunity(oportunityData.data)
+    })
+  },[oportunity])
     return (
         <Modal isOpen={props.show} toggle={props.onHide} size="lg">
             
@@ -19,10 +31,10 @@ const Oportunity = (props) => {
               </div>
               <div class="col-7">
                 <div class="row">
-                  <h5 class="font-purple">Título</h5>
+                  <h5 class="font-purple">{oportunity?oportunity.title : ''}</h5>
                 </div>
                 <div class="row">
-                  <p>ajnkjfansdfjkadsnfjkas</p>
+                  <p>{oportunity?oportunity.description : ''}</p>
                 </div>
                 <div class="row">
                   <h5 class="font-purple">Valor da conquista</h5>
