@@ -1,10 +1,19 @@
+import React, {useState, useEffect} from 'react'
 import Sidebar from '../components/Sidebar'
 import Header from '../components/Header'
 import Card from '../components/Card'
 import '../assets/css/content.css'
 import '../assets/css/content.css'
+import api from '../services/api'
 
 function App() {
+  const [demands, setDemands] = useState({demands:[]})
+
+  useEffect(() => {
+    api.get('demands').then(demand => setDemands((prevState) => ({...prevState, demands: demand.data})))
+  }, [])
+  
+
   return (
     <div className="App">
       <Sidebar />
@@ -19,7 +28,10 @@ function App() {
           <div className="row">
             <div className="col-8" style={{marginLeft: 0}}>
               <div className="row">
-                <Card />
+                {demands.demands.map((d,i) => (
+                  <Card key={i} demand ={d} />
+                ))}
+                
               </div>
             </div>
             <div className="col-4" style={{paddingLeft:40}}>

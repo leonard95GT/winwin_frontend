@@ -1,7 +1,27 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import '../assets/css/card.css'
+import api from '../services/api'
+import ModalParticipate from './Modals/InscribeDemand'
 
-const Card = () => {
+const Card = (props) => {
+  const [segments, setSegments] = useState({data: []})
+  const [companies, setCompanies] = useState({data: []})
+  const [demand, setDemand] = useState(props.demand)
+  const [modal, setModal] = useState(false)
+
+  const toogleModal = () => {
+    setModal(!modal)
+  }
+  
+  useEffect(() => {
+     api.get('segments').then(data => {
+      setSegments((prevState) => ({...prevState, data: data.data}))
+    })
+    api.get('companies').then(data => {
+      setCompanies((prevState) => ({...prevState, data: data.data}))
+    })
+  }, [])
+ 
     return (
         <div className="card shadow p-3 mb-5 bg-white">
         <div className="row">
@@ -9,8 +29,8 @@ const Card = () => {
             <div className="row">
               <div className="col-12">
                 <div className="card-body">
-                  <h5 className="card-title title font-blue" style={{textTransform: "capitalize"}}>Type_service</h5>
-                  <h6 className="card-subtitle mb-2 subtitle font-purple" style={{textTransform: "capitalize"}}>type_demand</h6>
+                  <h5 className="card-title title font-blue" style={{textTransform: "capitalize"}}>{demand.type_service}</h5>
+                  <h6 className="card-subtitle mb-2 subtitle font-purple" style={{textTransform: "capitalize"}}>{demand.type_demand}</h6>
                 </div>    
               </div>
               <div className="col-12">
@@ -24,7 +44,12 @@ const Card = () => {
                       </text>
                     </svg>
                   </h5>
-                  <h6 className="card-subtitle mb-2 text-muted">Claro Brasil</h6>
+                  {companies.data.map((d,i) => {
+                    if(d.id === demand.id_segment){
+                      return (<h6 key={i} className="card-subtitle mb-2 text-muted">{d.fantasy_name}</h6>)
+                    }
+                  })}
+
                 </div>    
               </div>
             </div>
@@ -34,31 +59,37 @@ const Card = () => {
               <div className="col-12">
                 <div className="card-body">
                   <h5 className="card-title font-purple">Título</h5>
-                  <h6 className="card-subtitle mb-2 text-muted">Title</h6>
+                  <h6 className="card-subtitle mb-2 text-muted">{demand.title}</h6>
                 </div>
               </div>
               <div className="col-12">
                 <div className="card-body">
                   <h5 className="card-title font-purple">Descrição</h5>
                   <h6 className="card-subtitle mb-2 text-muted">
-                    Description
+                    {props.demand.description}
                   </h6>
                 </div>
               </div>
               <div className="col-12">
                 <div className="card-body">
                   <h5 className="card-title font-purple">Categorias</h5>
-                  <h6 className="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                  {segments.data.map((d,i) => {
+                    if(d.id === demand.id_segment){
+                      return ( <h6 key={i} className="card-subtitle mb-2 text-muted">{d.name}</h6>)
+                    }
+                  })}
+                 
                 </div>
               </div>  
               <div className="col-12">
                 <div className="card-body">
-                  <a data-toggle="modal" className="buttonCard">Participar</a>
+                  <a className="buttonCard" onClick={() => toogleModal()}>Participar</a>
                 </div>
               </div>                    
             </div>
           </div>
         </div>
+        <ModalParticipate show={modal} demand={demand} segments={segments} onHide={() => toogleModal()}/>
       </div>
     )
 }

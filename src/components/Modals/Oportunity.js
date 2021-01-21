@@ -1,21 +1,28 @@
-import React from 'react'
-import { Modal, ModalBody, ModalHeader } from 'reactstrap'
+import React, {useEffect, useState} from 'react'
+import { Modal, ModalBody } from 'reactstrap'
 import Image from '../../assets/images/conquista.png'
 import  '../../assets/css/bussiness.css'
+import api from '../../services/api'
+
  
 const Oportunity = (props) => {
+  const [oportunity, setOportunity] = useState()
+  let item
+  useEffect(() => {
+   item = props.oportunity
+    console.log(props)
+    api.get('demands/'+ props.oportunity).then(oportunityData => {
+      console.log(oportunityData.data)
+      setOportunity(oportunityData.data)
+    })
+  },[oportunity])
     return (
-        <Modal isOpen={true}>
-            <ModalHeader>
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </ModalHeader>
+        <Modal isOpen={props.show} toggle={props.onHide} size="lg">
+            
             <ModalBody>
                 <div class="row">
-                    <div class="col-10">
-                        <h2 class="font-blue">Oportunidade conquistada Parabéns!!!!</h2>
+                    <div class="col-12">
+                        <h2 class="font-blue text-center">Oportunidade conquistada Parabéns!!!!</h2>
                     </div>
                 </div>
                 <div class="row justify-content-center">
@@ -24,10 +31,10 @@ const Oportunity = (props) => {
               </div>
               <div class="col-7">
                 <div class="row">
-                  <h5 class="font-purple">Título</h5>
+                  <h5 class="font-purple">{oportunity?oportunity.title : ''}</h5>
                 </div>
                 <div class="row">
-                  <p>ajnkjfansdfjkadsnfjkas</p>
+                  <p>{oportunity?oportunity.description : ''}</p>
                 </div>
                 <div class="row">
                   <h5 class="font-purple">Valor da conquista</h5>
